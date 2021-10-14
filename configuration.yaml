@@ -1,0 +1,27 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Pi-Hole component
+sensor:
+  - platform: pi_hole
+    host: 192.168.1.11
+
+# Pi-Hole switch
+switch:
+  - platform: command_line
+    switches:
+      pi_hole:
+        command_on: "curl -X GET 'http://192.168.1.11/admin/api.php?enable&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
+        command_off: "curl -X GET 'http://192.168.1.11/admin/api.php?disable=3600&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
+        command_state: "curl -X GET 'http://192.168.1.11/admin/api.php?status'"
+        value_template: "{{ value_json.status == 'enabled' }}"

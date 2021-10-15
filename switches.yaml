@@ -1,0 +1,14 @@
+
+# Pi-Hole switch
+- platform: command_line
+  switches:
+    pi_hole:
+      command_on: "curl -X GET 'http://192.168.1.11/admin/api.php?enable&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
+      command_off: "curl -X GET 'http://192.168.1.11/admin/api.php?disable=3600&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
+      command_state: "curl -X GET 'http://192.168.1.11/admin/api.php?status'"
+      value_template: "{{ value_json.status == 'enabled' }}"
+
+- platform: wake_on_lan
+  name: "Sobremesa"
+  mac: !secret pc_mac
+  host: "192.168.1.10"

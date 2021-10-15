@@ -1,0 +1,13 @@
+title: Casa Canalejas
+
+excluded_entities:
+
+button_card_templates: !include templates/button_card_templates.yaml
+
+views:
+  - title: Data
+    id: data
+    cards: !include views/data.yaml
+  - title: Devices
+    id: devices
+    cards: !include views/devices.yaml

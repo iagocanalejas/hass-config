@@ -1,0 +1,76 @@
+   
+- title: Pi Monitor
+  name: Pi Monitor
+  type: entities
+  show_header_toggle: false
+  entities:
+    - entity: sensor.current_version
+    - entity: sensor.last_boot
+    - entity: sensor.processor_use
+      name: CPU Use
+    - entity: sensor.memory_use_percent
+      name: Memory Use
+    - entity: sensor.cpu_temperature
+      name: CPU Temperature
+      
+- title: Computer Monitor
+  name: Computer Monitor
+  type: entities
+  show_header_toggle: false
+  entities:
+    - entity: sensor.desktop_a7usvot_st2000dm001_1er164_temperatures_temperature
+      name: Temperature
+    - entity: sensor.desktop_a7usvot_intel_core_i5_4690k_load_cpu_total
+      name: CPU Use
+      icon: mdi:cpu-64-bit
+    - entity: sensor.desktop_a7usvot_intel_core_i5_4690k_temperatures_cpu_package
+      name: CPU Temperature
+      icon: mdi:cpu-64-bit
+    - entity: sensor.desktop_a7usvot_intel_core_i5_4690k_powers_cpu_package
+      name: CPU Power
+      icon: mdi:cpu-64-bit
+    - entity: sensor.desktop_a7usvot_nvidia_nvidia_geforce_gtx_1660_ti_load_gpu_core
+      name: GPU Use
+      icon: mdi:expansion-card
+    - entity: sensor.desktop_a7usvot_nvidia_nvidia_geforce_gtx_1660_ti_temperatures_gpu_core
+      name: GPU Temperature
+      icon: mdi:expansion-card
+    - entity: sensor.desktop_a7usvot_nvidia_nvidia_geforce_gtx_1660_ti_powers_gpu_power
+      name: GPU Power
+      icon: mdi:expansion-card
+    - entity: sensor.desktop_a7usvot_generic_memory_load_memory
+      name: Memory Use
+      icon: mdi:memory
+
+- type: weather-forecast
+  entity: weather.home
+
+- title: Pi-Hole
+  name: Pi-Hole
+  type: entities
+  show_header_toggle: false
+  entities:
+    - entity: switch.pi_hole
+      icon: mdi:pi-hole
+      name: Pi-Hole Ads Block State
+    - entity: sensor.external_ip
+      name: My external IP
+    - type: custom:bar-card
+      title: Ads Blocked Today
+      title_position: inside
+      color: red
+      entity: sensor.pi_hole_ads_blocked_today
+      decimal: 0
+      max: 10000
+    - type: custom:bar-card
+      title: DNS Queries
+      title_position: inside
+      entity: sensor.pi_hole_dns_queries_today
+      decimal: 0
+      max: 100000
+    - type: custom:bar-card
+      title: DNS Unique Clients
+      title_position: inside
+      color: orange
+      entity: sensor.pi_hole_dns_unique_clients
+      decimal: 0

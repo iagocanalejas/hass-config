@@ -10,18 +10,59 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+switch: !include switches.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
 
-# Pi-Hole component
-sensor:
-  - platform: pi_hole
-    host: 192.168.1.11
+wake_on_lan:
 
-# Pi-Hole switch
-switch:
-  - platform: command_line
-    switches:
-      pi_hole:
-        command_on: "curl -X GET 'http://192.168.1.11/admin/api.php?enable&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
-        command_off: "curl -X GET 'http://192.168.1.11/admin/api.php?disable=3600&auth=d86e975849cdee2ad29d5bb70d1ee56de3ae905d62f4e4071899fbfa356548c9'"
-        command_state: "curl -X GET 'http://192.168.1.11/admin/api.php?status'"
-        value_template: "{{ value_json.status == 'enabled' }}"
+#https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/monster-card.js   
+      type: js 
+    - url: /local/custom-lovelace/weather-card/weather-card.js 
+      type: module 
+    - url: /local/plugins/card-tools.js
+      type: js
+    - url: /hacsfiles/plan-coordinates/plan-coordinates.js 
+      type: js   
+    - url: /hacsfiles/atomic_calendar/atomic_calendar.js     
+      type: module
+    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js     
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js 
+      type: module
+    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+      type: module
+    - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js 
+      type: module 
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js  
+      type: module
+    - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
+      type: module
+    - url: /hacsfiles/lovelace-card-tools/card-tools.js  
+      type: module     
+    - url: /hacsfiles/unused-card/unused-card.js
+      type: module
+    - url:  /hacsfiles/shutter-cover-panel-card/shutter-cover-panel-card.js
+      type: module
+    - url: /hacsfiles/LG-Keypad/card-numeric-pad.js
+      type: module
+    - url: /hacsfiles/canvas-gauge-card/canvas-gauge-card.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+    - url: /hacsfiles/logbook-card/logbook-card.js
+      type: module
+    - url: /hacsfiles/username-element/username-element.js
+      type: module
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/custom-sidebar/custom-sidebar.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module

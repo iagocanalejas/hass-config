@@ -1,0 +1,27 @@
+
+# Computer
+- platform: openhardwaremonitor
+  host: 192.168.1.10
+
+# Hass
+- platform: systemmonitor
+  resources:
+  - type: disk_use_percent
+    arg: /
+  - type: memory_use_percent
+  - type: processor_use
+  - type: last_boot
+
+- platform: version
+
+- platform: cpuspeed
+  name: 'CPU Speed'
+ 
+- platform: dnsip
+  name: 'External ip'
+
+- platform: command_line
+  name: 'CPU Temperature'
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ (value | multiply(0.001)) | round(1) }}'

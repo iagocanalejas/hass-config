@@ -1,0 +1,25 @@
+- title: Computer & Gaming
+  name: Computer & Gaming
+  type: custom:button-card
+  template: container
+  color: '#ABEBC6'
+  custom_fields:
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - entity: switch.sobremesa
+            name: Computer
+            template: standard
+            icon: mdi:desktop-classic
+            type: custom:button-card
+          - entity: switch.sobremesa
+            name: Table
+            template: standard
+            icon: mdi:table-furniture
+            type: custom:button-card
+          - entity: switch.sobremesa
+            name: Lights
+            template: standard
+            icon: mdi:ceiling-light
+            type: custom:button-card

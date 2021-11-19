@@ -11,3 +11,6 @@ views:
   - title: Devices
     id: devices
     cards: !include views/devices.yaml
+  - title: Crypto
+    id: crypto
+    cards: !include views/crypto.yaml

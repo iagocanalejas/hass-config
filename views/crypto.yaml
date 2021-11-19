@@ -1,0 +1,7 @@
+- title: Account Balance
+  name: Nicehash Account Balance
+  type: entities
+  show_header_toggle: false
+  entities:
+    - entity: sensor.nicehash_total_account_balance_btc
+    - entity: sensor.nicehash_total_account_balance_eur
